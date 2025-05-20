@@ -118,9 +118,12 @@ const ServiceListTable = ({ setItemEdit, setIsModal }) => {
                 if (val !== "") setIsFilter(true);
               }}
               disabled={false}
-              className="h-8 py-1 text-white"
+              className="h-8 py-1 text-white focus:border-white font-normal"
             >
-              <optgroup className="bg-primary" label="Select a status">
+              <optgroup
+                className="bg-secondary font-normal"
+                label="Select a status"
+              >
                 <option value="">All</option>
                 <option value="1">Active</option>
                 <option value="0">Inactive</option>
@@ -158,7 +161,6 @@ const ServiceListTable = ({ setItemEdit, setIsModal }) => {
           <thead>
             <tr>
               <th className="w-[1rem] text-center">#</th>
-              <th className="w-[2rem]">Status</th>
               <th className="w-[20rem]">Title</th>
               <th className="w-[20rem]">Description</th>
 
@@ -192,14 +194,6 @@ const ServiceListTable = ({ setItemEdit, setIsModal }) => {
                   return (
                     <tr key={key} className="relative group cursor-pointer">
                       <td className="text-center">{count++}.</td>
-                      <td>
-                        {item.service_is_active == 1 ? (
-                          <span className="text-green-600">Active</span>
-                        ) : (
-                          <span className="text-gray-600">Inactive</span>
-                        )}
-                      </td>
-
                       <td>{item.service_title}</td>
                       <td>{item.service_description}</td>
 

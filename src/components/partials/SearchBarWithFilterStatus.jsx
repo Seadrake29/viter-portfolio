@@ -47,7 +47,7 @@ const SearchBarWithFilterStatus = ({
           <input
             type="search"
             placeholder="Search here..."
-            className="text-xs py-1 h-8 pl-7 border-primary placeholder-white"
+            className="text-xs py-1 h-8 pl-7 border-white placeholder-white text-white focus:border-white"
             ref={search}
             onChange={(e) => handleChange(e)}
           />

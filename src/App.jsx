@@ -25,9 +25,6 @@ export default function App() {
               }
             />
 
-            <Route path="/" element={<DonorList />} />
-            <Route path="/donor" element={<DonorList />} />
-            <Route path="/children-list" element={<ChildrenList />} />
             <Route
               path="/settings/experience"
               element={<SettingsExperience />}
