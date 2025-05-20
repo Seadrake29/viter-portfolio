@@ -11,7 +11,7 @@ const Navigation = ({ menu = "", subMenu = "" }) => {
   return (
     <>
       <nav className="fixed overflow-y-auto w-[12rem] uppercase pt-3 bg-primary h-dvh">
-        <div className="text-sm text-white  flex-col justify-between h-full">
+        <div className="text-sm text-textcolor  flex-col justify-between h-full">
           <ul className="text-xs">
             {developerNavigation.map((item, index) => {
               console.log(item.name);
@@ -20,7 +20,9 @@ const Navigation = ({ menu = "", subMenu = "" }) => {
                 <li
                   key={index}
                   className={`${
-                    item.code === menu ? "bg-black" : "hover:bg-white/10"
+                    item.code === menu
+                      ? "bg-secondary text-primary"
+                      : "hover:bg-white/10"
                   }`}
                   onClick={() => {
                     if (item.code === "reports") {
@@ -69,8 +71,8 @@ const Navigation = ({ menu = "", subMenu = "" }) => {
                                   to={subItem.link}
                                   className={`border-l-2 pl-3 capitalize border-transparent hover:border-accent ${
                                     subMenu === subItem.code
-                                      ? "border-accent text-accent"
-                                      : "border-transparent"
+                                      ? "border-accent text-white"
+                                      : "border-transparent text-textcolor"
                                   }`}
                                 >
                                   {subItem.name}

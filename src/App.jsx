@@ -1,11 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { StoreProvider } from "../store/StoreContext";
-import SettingsDesignation from "./components/pages/developer/settings/designation/SettingsDesignation";
-import SettingsNotification from "./components/pages/developer/settings/notification/SettingsNotification";
+
 import DonorList from "./components/pages/developer/donor-list/DonorList";
 import ChildrenList from "./components/pages/developer/children-list/ChildrenList";
 import SettingsExperience from "./components/pages/developer/settings/experience/SettingsExperience";
+
+import ServiceList from "./components/pages/developer/settings/service/ServiceList";
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -31,14 +32,7 @@ export default function App() {
               path="/settings/experience"
               element={<SettingsExperience />}
             />
-            <Route
-              path="/settings/designation"
-              element={<SettingsDesignation />}
-            />
-            <Route
-              path="/settings/notification"
-              element={<SettingsNotification />}
-            />
+            <Route path="/settings/service" element={<ServiceList />} />
           </Routes>
         </Router>
       </StoreProvider>

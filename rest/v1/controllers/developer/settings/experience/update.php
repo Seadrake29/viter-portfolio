@@ -16,7 +16,7 @@ if (array_key_exists('experienceid', $_GET)) {
     $experience->experience_description = checkIndex($data, 'experience_description');
     $experience->experience_updated = date('Y-m-d H:i:s');
 
-    $experience_title_old = $data['experience_title_old'];
+    $experience_title_old = checkIndex($data, 'experience_title_old');
 
     // VALIDATION
     checkId($experience->experience_aid);

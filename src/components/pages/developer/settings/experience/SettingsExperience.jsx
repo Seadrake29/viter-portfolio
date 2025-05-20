@@ -4,8 +4,8 @@ import Navigation from "../../Navigation";
 import BreadCrumbs from "../../../../partials/BreadCrumbs";
 import Footer from "../../../../partials/Footer";
 import { FaPlus } from "react-icons/fa";
-import SettingsExperienceList from "./SettingsExperienceList";
 import ModalAddSettingsExperience from "./ModalAddSettingsExperience";
+import ExperienceListTable from "./ExperienceListTable";
 
 const SettingsExperience = () => {
   const [isModalExperience, setIsModalExperience] = React.useState(false); //INITIAL VALUE
@@ -21,7 +21,7 @@ const SettingsExperience = () => {
     <>
       <Header />
       <Navigation menu="settings" subMenu="experience" />
-      <div className="wrapper bg-mygray">
+      <div className="wrapper bg-secondary">
         {/* BREADCRUMBS OR ADD BUTTON */}
         <div className="flex items-center justify-between">
           <BreadCrumbs />
@@ -39,7 +39,7 @@ const SettingsExperience = () => {
         <div className="pb-8">
           <h2 className="text-white mt-3">Experience</h2>
           <div className="pt-3">
-            <SettingsExperienceList
+            <ExperienceListTable
               setItemEdit={setItemEdit}
               setIsModal={setIsModalExperience}
             />

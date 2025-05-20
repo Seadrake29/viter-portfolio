@@ -41,13 +41,13 @@ const SearchBarWithFilterStatus = ({
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="relative">
-          <span className="absolute left-2.5 top-2.5">
+          <span className="absolute left-2.5 top-2.5 text-white">
             <FaSearch />
           </span>
           <input
             type="search"
             placeholder="Search here..."
-            className="text-xs py-1 h-8 pl-7"
+            className="text-xs py-1 h-8 pl-7 border-primary placeholder-white"
             ref={search}
             onChange={(e) => handleChange(e)}
           />

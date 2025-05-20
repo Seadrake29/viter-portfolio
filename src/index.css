@@ -65,8 +65,13 @@
     @apply text-xs text-primary transform -translate-y-6 -translate-x-1 absolute left-3 top-4 px-1  z-10 isolate;
   }
   label:after {
+    @apply content-[''] w-[97%] h-[2.5px] absolute left-px top-[7.2px] bg-secondary -z-10;
+  }
+
+  .moodal label:after {
     @apply content-[''] w-[97%] h-[2.5px] absolute left-px top-[7.2px] bg-white -z-10;
   }
+
   input:disabled,
   select:disabled,
   textarea:disabled,

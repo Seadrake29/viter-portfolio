@@ -4,11 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#1f2020",
-        secondary: "#282828",
-        accent: "#fc9827",
+        primary: "#86469C",
+        secondary: "#BC7FCD",
+        accent: "#FB9AD1 ",
         dark: "#3a3b36",
         mygray: "#3e4040",
+        textcolor: "#FFCDEA",
       },
       keyframes: {
         shake: {

@@ -4,18 +4,18 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes or use the model
-$designation = new Designation($conn);
+$service = new Service($conn);
 
-if (array_key_exists("designationid", $_GET)) {
-    $designation->designation_aid = $_GET['designationid'];
-    checkId($designation->designation_aid);
-    $query = checkReadById($designation);
+if (array_key_exists("serviceid", $_GET)) {
+    $service->service_aid = $_GET['serviceid'];
+    checkId($service->service_aid);
+    $query = checkReadById($service);
     http_response_code(200);
     getQueriedData($query);
 }
 
 if (empty($_GET)) {
-    $query = checkReadAll($designation);
+    $query = checkReadAll($service);
     http_response_code(200);
     getQueriedData($query);
 }

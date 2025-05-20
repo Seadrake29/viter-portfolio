@@ -9,13 +9,13 @@ const Header = () => {
 
   return (
     <>
-      <div className="sticky top-0 z-20 flex items-center justify-between h-16 border-solid border-b-2 border-primary bg-white px-2">
+      <div className="sticky top-0 z-20 flex items-center justify-between h-16 border-solid border-b-2 border-white bg-primary px-2">
         <div>
           <FtcLogoHeader />
         </div>
 
         <div>
-          <div className="rounded-full bg-primary h-8 w-8 flex items-center justify-center text-white">
+          <div className="rounded-full bg-secondary h-8 w-8 flex items-center justify-center text-white">
             <span className="block">P</span>
             <span className="block">C</span>
           </div>

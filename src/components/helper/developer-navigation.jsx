@@ -42,9 +42,9 @@ export const developerNavigation = [
       },
 
       {
-        name: "designation",
-        code: "designation",
-        link: "/settings/designation",
+        name: "service",
+        code: "service",
+        link: "/settings/service",
       },
     ],
   },

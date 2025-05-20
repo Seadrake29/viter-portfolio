@@ -20,7 +20,7 @@ const Loadmore = ({
             className="h-full relative my-8 text-primary p-1.5 rounded-full w-36 disabled:opacity-50 disabled:cursor-not-allowed"
           ></button>
         ) : (
-          <div className="my-8 p-1.5 flex items-center justify-center">
+          <div className="my-8 p-1.5 flex items-center justify-center text-white">
             End of list.
           </div>
         )}
