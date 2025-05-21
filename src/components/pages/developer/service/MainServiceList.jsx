@@ -4,14 +4,14 @@ import { FaPlus } from "react-icons/fa";
 
 import * as Yup from "yup";
 
-import BreadCrumbs from "../../../../partials/BreadCrumbs";
-import ModalAddSettingsService from "./ModalAddSettingsService";
-import ServiceListTable from "./ServiceListTable";
-import Header from "../../../../partials/Header";
-import Navigation from "../../Navigation";
-import Footer from "../../../../partials/Footer";
+import MainServiceListTable from "./MainServiceListTable";
+import ModalAddMainService from "./ModalAddMainService";
+import Header from "../../../partials/Header";
+import Navigation from "../Navigation";
+import Footer from "../../../partials/Footer";
+import BreadCrumbs from "../../../partials/BreadCrumbs";
 
-const ServiceList = () => {
+const MainServiceList = () => {
   const [itemEdit, setItemEdit] = React.useState(null);
   const [isModalService, setIsModalService] = React.useState(false);
 
@@ -20,15 +20,14 @@ const ServiceList = () => {
     setIsModalService(true);
   };
 
-  const currentMenu = location.pathname.startsWith("/service")
-    ? "/service"
+  const currentMenu = location.pathname.startsWith("/mainservice")
+    ? "/mainservice"
     : "";
 
   return (
     <>
       <Header />
-
-      <Navigation menu="my-service" />
+      <Navigation menu="service" />
 
       <div className="wrapper bg-secondary">
         {/*BREADCRUMBS OR ADD BUTTON*/}
@@ -50,7 +49,7 @@ const ServiceList = () => {
         <div className="pb-8">
           <h2 className="text-base text-white">Service</h2>
           <div className="pt-3">
-            <ServiceListTable
+            <MainServiceListTable
               setItemEdit={setItemEdit}
               setIsModal={setIsModalService}
             />
@@ -61,7 +60,7 @@ const ServiceList = () => {
         <Footer />
 
         {isModalService && (
-          <ModalAddSettingsService
+          <ModalAddMainService
             itemEdit={itemEdit}
             setIsModal={setIsModalService}
           />
@@ -71,4 +70,4 @@ const ServiceList = () => {
   );
 };
 
-export default ServiceList;
+export default MainServiceList;

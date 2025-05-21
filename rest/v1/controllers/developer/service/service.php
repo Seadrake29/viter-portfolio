@@ -1,10 +1,10 @@
 <?php
 //  set http header
-require_once '../../../core/header.php';
+require '../../../core/header.php';
 // use needed functions
-require_once '../../../core/functions.php';
+require '../../../core/functions.php';
 // use needed models
-require '../../../models/developer/donor-list/DonorList.php';
+require '../../../models/developer/service/MainService.php';
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
 

@@ -3,12 +3,12 @@
 require '../../../core/header.php';
 require '../../../core/functions.php';
 require 'functions.php';
-require '../../../models/developer/children-list/ChildrenList.php';
+require '../../../models/developer/service/MainService.php';
 
 $conn = null;
 $conn = checkDbConnection();
 
-$childrenList = new ChildrenList($conn);
+$mainservice = new MainService($conn);
 
 $body = file_get_contents('php://input');
 $data = json_decode($body, true);
@@ -17,21 +17,21 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     checkPayload($data);
 
-    $childrenList->search = $data['searchValue'];
+    $mainservice->search = $data['searchValue'];
 
     if ($data['isFilter']) {
-        $childrenList->children_list_is_active = $data['isActive'];
+        $mainservice->mainservice_is_active = $data['isActive'];
         http_response_code(200);
-        if ($childrenList->search != '') {
-            $query = checkFilterSearch($childrenList);
+        if ($mainservice->search != '') {
+            $query = checkFilterSearch($mainservice);
             getQueriedData($query);
         }
 
-        $query = checkFilter($childrenList);
+        $query = checkFilter($mainservice);
         getQueriedData($query);
     }
 
-    $query = checkSearch($childrenList);
+    $query = checkSearch($mainservice);
     http_response_code(200);
     getQueriedData($query);
 }

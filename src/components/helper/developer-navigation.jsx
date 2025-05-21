@@ -1,33 +1,45 @@
-import { FaCogs, FaHandHoldingHeart, FaList } from "react-icons/fa";
+import {
+  FaCogs,
+  FaHandHoldingHeart,
+  FaList,
+  FaQuoteRight,
+  FaTools,
+} from "react-icons/fa";
 import { FaChildren } from "react-icons/fa6";
+import { MdWork } from "react-icons/md";
 
 export const developerNavigation = [
   {
-    name: "Donor",
-    code: "donor",
-    link: "/donor",
+    name: "Dashboard",
+    code: "dashboard",
+    link: "/dashboard",
     icon: <FaHandHoldingHeart />,
   },
 
   {
-    name: "Children List",
-    code: "children-list",
-    link: "/children-list",
+    name: "About",
+    code: "about",
+    link: "/about",
     icon: <FaChildren />,
   },
 
   {
-    name: "Reports",
-    code: "reports",
-    link: "/reports",
-    icon: <FaList />,
-    isDropDown: true,
-    subMenu: [
-      {
-        name: "donation",
-        link: "/donation",
-      },
-    ],
+    name: "Testimonial",
+    code: "testimonial",
+    link: "/testimonial",
+    icon: <FaQuoteRight />,
+  },
+  {
+    name: "Experience",
+    code: "experience",
+    link: "/experience",
+    icon: <MdWork />,
+  },
+  {
+    name: "Service",
+    code: "service",
+    link: "/service",
+    icon: <FaTools />,
   },
   {
     name: "settings",
@@ -36,15 +48,15 @@ export const developerNavigation = [
     isDropDown: true,
     subMenu: [
       {
-        name: "experience",
-        code: "experience",
-        link: "/settings/experience",
+        name: "My Experience",
+        code: "my-experience",
+        link: "/settings/myexperience",
       },
 
       {
-        name: "service",
-        code: "service",
-        link: "/settings/service",
+        name: "My Service",
+        code: "my-service",
+        link: "/settings/myservice",
       },
     ],
   },
