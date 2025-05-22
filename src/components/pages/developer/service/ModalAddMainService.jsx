@@ -10,9 +10,14 @@ import {
   setSuccess,
 } from "../../../../../store/StoreAction";
 import { queryData } from "../../../helper/queryData";
-import { InputText, InputTextArea } from "../../../custom-hooks/FormInputs";
+import {
+  InputSelect,
+  InputText,
+  InputTextArea,
+} from "../../../custom-hooks/FormInputs";
 import ModalWrapperSide from "../../../partials/modal/ModalWrapperSide";
 import { StoreContext } from "../../../../../store/StoreContext";
+import useQueryData from "../../../helper/useQueryData";
 
 const ModalAddMainService = ({ itemEdit, setIsModal }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -41,6 +46,13 @@ const ModalAddMainService = ({ itemEdit, setIsModal }) => {
       }
     },
   });
+
+  const {
+    isFetching: isFetchingCategories,
+    error: categoryError,
+    data: categoryData,
+    status: categoryStatus,
+  } = useQueryData("/v1/mainservice_category", "get", "mainservice_category");
 
   const initVal = {
     mainservice_title: itemEdit ? itemEdit.mainservice_title : "",
@@ -99,35 +111,29 @@ const ModalAddMainService = ({ itemEdit, setIsModal }) => {
                       disabled={false}
                     />
                   </div>
-
-                  {/* Category Dropdown */}
-                  <div className="relative mt-3 mb-5">
-                    <label
-                      htmlFor="mainservice_category"
-                      className="form-label"
-                    >
-                      Category
-                    </label>
-                    <select
-                      id="mainservice_category"
+                  <div className="relative z-50 mt-3 mb-5">
+                    <InputSelect
+                      label="Select Category"
+                      type="text"
                       name="mainservice_category"
-                      value={props.values.mainservice_category}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      className="form-input"
+                      value={props.values.mainservice_category}
+                      className="z-50"
                     >
-                      <option value="" label="Select category" />
-                      <option value="Consulting" label="Consulting" />
-                      <option value="Development" label="Development" />
-                      <option value="Design" label="Design" />
-                      <option value="Marketing" label="Marketing" />
-                    </select>
-                    {props.touched.mainservice_category &&
-                    props.errors.mainservice_category ? (
-                      <div className="form-error">
-                        {props.errors.mainservice_category}
-                      </div>
-                    ) : null}
+                      <option value="" hidden>
+                        Select Category
+                      </option>
+                      {categoryData?.map((item, key) => {
+                        return (
+                          item.service_is_active === 1 && (
+                            <option key={key} value={item.service_aid}>
+                              {item.service_title}
+                            </option>
+                          )
+                        );
+                      })}
+                    </InputSelect>
                   </div>
 
                   <div className="relative mt-3 mb-5">

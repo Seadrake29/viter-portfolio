@@ -14,8 +14,8 @@ $service = new Service($conn);
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     if (array_key_exists('start', $_GET)) {
-        $service->start = $_GET['start'];
-        $service->total = 3;
+        $service->service_start = $_GET['start'];
+        $service->service_total = 3;
 
         $query = checkReadLimit($service);
         $total_result = checkReadAll($service);
@@ -24,8 +24,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         checkReadQuery(
             $query,
             $total_result,
-            $service->total,
-            $service->start
+            $service->service_total,
+            $service->service_start
         );
     }
 }

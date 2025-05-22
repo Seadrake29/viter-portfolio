@@ -13,9 +13,9 @@ class Service
 
 
 
-    public $start;
-    public $total;
-    public $search;
+    public $service_start;
+    public $service_total;
+    public $service_search;
 
     public $connection;
     public $lastInsertedId;
@@ -107,8 +107,8 @@ class Service
             $query = $this->connection->prepare($sql);
 
             // PDO requires integers to be explicitly bound for LIMIT
-            $query->bindValue(':start', (int)($this->start - 1), PDO::PARAM_INT);
-            $query->bindValue(':total', (int)$this->total, PDO::PARAM_INT);
+            $query->bindValue(':start', (int)($this->service_start - 1), PDO::PARAM_INT);
+            $query->bindValue(':total', (int)$this->service_total, PDO::PARAM_INT);
 
             $query->execute();
         } catch (PDOException $ex) {
@@ -141,8 +141,8 @@ class Service
             $query->execute([
                 // est
                 // test
-                'service_title' => "%{$this->search}%",
-                'service_description' => "%{$this->search}%"
+                'service_title' => "%{$this->service_search}%",
+                'service_description' => "%{$this->service_search}%"
 
             ]);
         } catch (PDOException $ex) {
@@ -176,8 +176,8 @@ class Service
             $query = $this->connection->prepare($sql);
             $query->execute([
                 'service_is_active' => $this->service_is_active,
-                'service_title' => "%{$this->search}%",
-                'service_description' => "%{$this->search}%",
+                'service_title' => "%{$this->service_search}%",
+                'service_description' => "%{$this->service_search}%",
             ]);
         } catch (PDOException $ex) {
             returnError($ex);

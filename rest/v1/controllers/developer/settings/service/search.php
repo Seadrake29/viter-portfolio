@@ -17,12 +17,12 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     checkPayload($data);
 
-    $service->search = $data['searchValue'];
+    $service->service_search = $data['searchValue'];
 
     if ($data['isFilter']) {
         $service->service_is_active = $data['isActive'];
         http_response_code(200);
-        if ($service->search != '') {
+        if ($service->service_search != '') {
             $query = checkFilterSearch($service);
             getQueriedData($query);
         }

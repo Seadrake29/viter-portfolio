@@ -12,11 +12,23 @@ class MainService
     public $mainservice_created;
     public $mainservice_updated;
 
+    public $service_aid;
+    public $service_is_active;
+    public $service_title;
+    public $service_description;
+    public $service_created;
+    public $service_updated;
 
 
-    public $start;
-    public $total;
-    public $search;
+
+    public $mainservice_start;
+    public $mainservice_total;
+    public $mainservice_search;
+
+    
+    public $service_start;
+    public $service_total;
+    public $service_search;
 
     public $connection;
     public $lastInsertedId;
@@ -115,8 +127,8 @@ class MainService
             $query = $this->connection->prepare($sql);
 
             // PDO requires integers to be explicitly bound for LIMIT
-            $query->bindValue(':start', (int)($this->start - 1), PDO::PARAM_INT);
-            $query->bindValue(':total', (int)$this->total, PDO::PARAM_INT);
+            $query->bindValue(':start', (int)($this->mainservice_start - 1), PDO::PARAM_INT);
+            $query->bindValue(':total', (int)$this->mainservice_total, PDO::PARAM_INT);
 
             $query->execute();
         } catch (PDOException $ex) {
@@ -150,8 +162,8 @@ class MainService
             $query->execute([
                 // est
                 // test
-                'mainservice_title' => "%{$this->search}%",
-                'mainservice_description' => "%{$this->search}%"
+                'mainservice_title' => "%{$this->mainservice_search}%",
+                'mainservice_description' => "%{$this->mainservice_search}%"
 
             ]);
         } catch (PDOException $ex) {
@@ -186,8 +198,8 @@ class MainService
             $query = $this->connection->prepare($sql);
             $query->execute([
                 'mainservice_is_active' => $this->mainservice_is_active,
-                'mainservice_title' => "%{$this->search}%",
-                'mainservice_description' => "%{$this->search}%",
+                'mainservice_title' => "%{$this->mainservice_search}%",
+                'mainservice_description' => "%{$this->mainservice_search}%",
             ]);
         } catch (PDOException $ex) {
             returnError($ex);
@@ -289,6 +301,8 @@ class MainService
         return $query;
     }
 
+
+    
 
 
 
