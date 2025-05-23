@@ -25,7 +25,7 @@ class MainService
     public $mainservice_total;
     public $mainservice_search;
 
-    
+
     public $service_start;
     public $service_total;
     public $service_search;
@@ -147,24 +147,22 @@ class MainService
             $sql .= "mainservice_title, ";
             $sql .= "mainservice_category, ";
             $sql .= "mainservice_description, ";
-            $sql .= " mainservice_created,";
-            $sql .= " mainservice_updated ";
+            $sql .= "mainservice_created, ";
+            $sql .= "mainservice_updated ";
             $sql .= "from {$this->tblMainservice} ";
             $sql .= "where ";
             $sql .= "mainservice_title like :mainservice_title ";
             $sql .= "or mainservice_description like :mainservice_description ";
+            $sql .= "or mainservice_category like :mainservice_category ";
             $sql .= "order by ";
             $sql .= "mainservice_is_active desc, ";
             $sql .= "mainservice_title asc ";
 
-
             $query = $this->connection->prepare($sql);
             $query->execute([
-                // est
-                // test
                 'mainservice_title' => "%{$this->mainservice_search}%",
-                'mainservice_description' => "%{$this->mainservice_search}%"
-
+                'mainservice_description' => "%{$this->mainservice_search}%",
+                'mainservice_category' => "%{$this->mainservice_search}%"
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -190,6 +188,7 @@ class MainService
             $sql .= "and ( ";
             $sql .= "mainservice_title like :mainservice_title ";
             $sql .= "or mainservice_description like :mainservice_description ";
+            $sql .= "or mainservice_category like :mainservice_category ";
             $sql .= ") ";
             $sql .= "order by ";
             $sql .= "mainservice_is_active desc, ";
@@ -200,6 +199,7 @@ class MainService
                 'mainservice_is_active' => $this->mainservice_is_active,
                 'mainservice_title' => "%{$this->mainservice_search}%",
                 'mainservice_description' => "%{$this->mainservice_search}%",
+                'mainservice_category' => "%{$this->mainservice_search}%",
             ]);
         } catch (PDOException $ex) {
             returnError($ex);
@@ -207,6 +207,7 @@ class MainService
         }
         return $query;
     }
+
 
     public function filter()
     {
@@ -302,7 +303,7 @@ class MainService
     }
 
 
-    
+
 
 
 

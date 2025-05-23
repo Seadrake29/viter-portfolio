@@ -20,6 +20,7 @@ if (array_key_exists('mainserviceid', $_GET)) {
     // CHECKING DATA
     $mainservice->mainservice_aid = $_GET['mainserviceid'];
     $mainservice->mainservice_title = $data['mainservice_title'];
+    $mainservice->mainservice_category = $data['mainservice_category'];
     $mainservice->mainservice_description = $data['mainservice_description'];
     $mainservice->mainservice_updated = date('Y-m-d H:i:s');
 

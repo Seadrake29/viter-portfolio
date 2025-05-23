@@ -1,10 +1,12 @@
 <?php
 
 require '../../../core/header.php';
+
 require '../../../core/functions.php';
 
 
 require '../../../models/developer/service/MainService.php';
+
 
 $conn = null;
 $conn = checkDbConnection();

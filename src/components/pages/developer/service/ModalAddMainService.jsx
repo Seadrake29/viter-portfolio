@@ -24,6 +24,26 @@ const ModalAddMainService = ({ itemEdit, setIsModal }) => {
   const [animate, setAnimate] = React.useState("translate-x-full");
   const queryClient = useQueryClient();
 
+  const {
+    isLoading,
+    isFetching,
+    error,
+    data: category,
+  } = useQueryData(
+    `/rest/v1/controllers/developer/settings/service/service.php`,
+    "get",
+    "service",
+    {},
+    null,
+    true
+  );
+
+  const filterActiveCategory = category?.data.filter(
+    (item) =>
+      item.service_is_active == 1 ||
+      (itemEdit && itemEdit.mainservice_id == item.service_aid)
+  );
+
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
@@ -46,13 +66,6 @@ const ModalAddMainService = ({ itemEdit, setIsModal }) => {
       }
     },
   });
-
-  const {
-    isFetching: isFetchingCategories,
-    error: categoryError,
-    data: categoryData,
-    status: categoryStatus,
-  } = useQueryData("/v1/mainservice_category", "get", "mainservice_category");
 
   const initVal = {
     mainservice_title: itemEdit ? itemEdit.mainservice_title : "",
@@ -111,28 +124,40 @@ const ModalAddMainService = ({ itemEdit, setIsModal }) => {
                       disabled={false}
                     />
                   </div>
-                  <div className="relative z-50 mt-3 mb-5">
+                  <div className="relative mt-3 mb-5">
                     <InputSelect
-                      label="Select Category"
+                      label="Category"
                       type="text"
                       name="mainservice_category"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.mainservice_category}
-                      className="z-50"
+                      onChange={(e) => e}
+                      disabled={mutation.isPending}
                     >
-                      <option value="" hidden>
-                        Select Category
-                      </option>
-                      {categoryData?.map((item, key) => {
-                        return (
-                          item.service_is_active === 1 && (
-                            <option key={key} value={item.service_aid}>
-                              {item.service_title}
-                            </option>
-                          )
-                        );
-                      })}
+                      <optgroup label="-- Select a category">
+                        {isLoading || isFetching ? (
+                          <option disabled value="">
+                            Loading...
+                          </option>
+                        ) : error ? (
+                          <option disabled value="">
+                            Server Error
+                          </option>
+                        ) : filterActiveCategory?.length == 0 ? (
+                          <option disabled value="">
+                            No Data
+                          </option>
+                        ) : (
+                          <>
+                            <option value="" hidden></option>
+                            {filterActiveCategory.map((item, index) => {
+                              return (
+                                <option key={index} value={item.service_title}>
+                                  {item.service_title}
+                                </option>
+                              );
+                            })}
+                          </>
+                        )}
+                      </optgroup>
                     </InputSelect>
                   </div>
 
